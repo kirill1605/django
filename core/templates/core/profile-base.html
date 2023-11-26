@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/reset.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    {% block style %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__inner container">
+                <nav class="header__nav">
+                    <ul class="header__link-container">
+                        <li class="header__link-box"><a href="{% url 'home:profile' %}" class="header__link">Профиль</a></li>
+                        <li class="header__link-box"><a href="{% url 'products:products' %}" class="header__link">Товары</a></li>
+                        <li class="header__link-box"><a href="{% url 'employees:employees' %}" class="header__link">Сотрудники</a></li>
+                        <li class="header__link-box"><a href="{% url 'income:income' %}" class="header__link">Доходы</a></li>
+                        <li class="header__link-box"><a href="{% url 'expenses:expenses' %}" class="header__link">Расходы</a></li>
+                        <li class="header__link-box"><a href="{% url 'orders:orders' %}" class="header__link">Заказы</a></li>
+                        <li class="header__link-box"><a href="{% url 'home:logout' %}" class="header__link">Выйти</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="main">
+                <div class="main__inner container">
+                    {% block content %}
+                    
+                    {% endblock %}
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__inner container">
+                <ul class="footer__list-container">
+                    <li class="footer__list-box">Кораблин Кирилл Артемович</li>
+                    <li class="footer__list-box">Группа: 221-323</li>
+                    <li class="footer__list-box">30.06.2023</li>
+                </ul>
+            </div>
+        </footer>
+    </div>    
+</body>
+</html>

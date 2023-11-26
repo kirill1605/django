@@ -1,0 +1,19 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Товары{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Товары</h1>
+    <ul class="storage__box">
+        {% for product in products %}
+        <li class="storage__item">
+            <p class="storage__name">{{ product.name }} - {{ product.price }}</p>
+            <a href="{% url 'products:product_update' product.pk %}" class="storage__button">Изменить</a>
+            <a href="{% url 'products:product_delete' product.pk %}" class="storage__button">Удалить</a>
+        </li>
+        {% empty %}
+        <li class="storage__none">Нет добавленных товаров</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'products:product_create' %}" class="storage__button">Добавить товар</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Расходы{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Список статей расходов</h1>
+    <ul class="storage__box">
+        {% for expense in expenses %}
+        <li class="storage__item">
+            <p class="storage__name">{{ expense.operation_name }} - {{ expense.amount }}</p>
+            <a href="{% url 'expenses:expense_edit' expense.id %}" class="storage__button">Изменить</a>
+            <a href="{% url 'expenses:expense_delete' expense.id %}" class="storage__button">Удалить</a>
+        </li>
+        {% empty %}
+        <li class="storage__none">Нет добавленных статей расдоходов</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'expenses:expense_add' %}" class="storage__button">Добавить статью расходы</a>
+{% endblock %}

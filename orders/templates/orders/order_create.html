@@ -1,0 +1,13 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Добавить заказ{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Добавить заказ</h1>
+    <form method="post" class="storage__form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="storage__button">Добавить</button>
+    </form>
+    <a href="{% url 'orders:orders' %}" class="storage__button">Отмена</a>
+{% endblock %}

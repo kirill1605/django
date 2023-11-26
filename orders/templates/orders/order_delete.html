@@ -1,0 +1,13 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Удалить заказ{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Удалить заказ</h1>
+    <p class="storage__name">Вы уверены, что хотите удалить заказ "{{ order.product_name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="storage__button">Удалить</button>
+    </form>
+    <a href="{% url 'orders:orders' %}" class="storage__button">Отмена</a>
+{% endblock %}

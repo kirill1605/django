@@ -1,0 +1,19 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Доходы{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Список доходов</h1>
+    <ul class="storage__box">
+        {% for income in incomes %}
+        <li class="storage__item">
+            <p class="storage__name">{{ income.operation_name }} - {{ income.amount }}</p>
+            <a href="{% url 'income:income_edit' income.id %}" class="storage__button">Изменить</a>
+            <a href="{% url 'income:income_delete' income.id %}" class="storage__button">Удалить</a>
+        </li>
+        {% empty %}
+        <li class="storage__none">Нет внесенных статей доходов</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'income:income_add' %}" class="storage__button">Добавить статьи доходов</a>
+{% endblock %}

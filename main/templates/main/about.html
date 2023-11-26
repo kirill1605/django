@@ -1,0 +1,22 @@
+{% extends 'core/main-base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+{% load static %}
+    <h1 class="main__title">Информация о сайте</h1>
+    <p class="main__text">Сайт был создан при исользовании следующих технологий:</p>
+    <h2 class="main__subtitle">Фронтенд:</h2>
+    <ul class="main__list-box">
+        <li class="main__list-item">HTML</li>
+        <li class="main__list-item">CSS</li>
+        <li class="main__list-item">JS</li>
+    </ul>
+    <h2 class="main__subtitle">Бэкенд:</h2>
+    <ul class="main__list-box">
+        <li class="main__list-item">Python</li>
+        <li class="main__list-item">Фреймворк Django</li>
+    </ul>
+    <h2 class="main__subtitle">UML таблица</h2>
+    <img src="{% static 'core/img/uml.png' %}" alt="uml" class="main__img">
+{% endblock %}

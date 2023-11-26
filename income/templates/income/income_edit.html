@@ -1,0 +1,13 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Редактировать статью дохода{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Редактировать статью доход</h1>
+    <form method="post" class="storage__form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="storage__button">Сохранить</button>
+    </form>
+    <a href="{% url 'income:income' %}" class="storage__button">Отмена</a>
+{% endblock %}

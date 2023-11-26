@@ -1,0 +1,19 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Заказы</h1>
+    <ul class="storage__box">
+        {% for order in orders %}
+        <li class="storage__item">
+            <p class="storage__name">{{ order.product_name }} - {{ order.price }} - {{ order.delivery_address }}</p>
+            <a href="{% url 'orders:order_update' order.pk %}" class="storage__button">Изменить</a>
+            <a href="{% url 'orders:order_delete' order.pk %}" class="storage__button">Удалить</a>
+        </li>
+        {% empty %}
+        <li class="storage__none">Нет новых заказов</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'orders:order_create' %}" class="storage__button">Добавить товар</a>
+{% endblock %}

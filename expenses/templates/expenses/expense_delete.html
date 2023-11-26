@@ -1,0 +1,13 @@
+{% extends 'core/profile-base.html' %}
+
+{% block title %}Удалить статью расхода{% endblock %}
+
+{% block content %}
+    <h1 class="storage__title">Удалить статью расхода</h1>
+    <p class="storage__name">Вы уверены, что хотите удалить статью расхода "{{ expense.operation_name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="storage__button">Удалить</button>
+    </form>
+    <a href="{% url 'expenses:expenses' %}" class="storage__button">Отмена</a>
+{% endblock %}
