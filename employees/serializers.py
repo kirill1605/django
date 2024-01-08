@@ -1,22 +1,36 @@
 from rest_framework import serializers
 from rest_framework import viewsets
-from django.db.models import Q
 from .models import Employee
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
-
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = ('first_name', 'last_name', 'position', 'salary')
 
+    def validate_first_name(self, value):
+        if value is None:
+            raise serializers.ValidationError("Введите имя")
+        return value
+
+    def validate_last_name(self, value):
+        if value is None:
+            raise serializers.ValidationError("Введите фамилию")
+        return value
+
+    def validate_salary(self, value):
+        if value is None:
+            raise serializers.ValidationError("Введите сумму ЗП")
+        return value
+
+    def validate_position(self, value):
+        if value is None:
+            raise serializers.ValidationError("Введите должность")
+        return value
+
 
 class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset = Employee.objects.filter(
-        Q(salary__gt=50000)
-        | Q(first_name__startswith="В")
-    )
+
 
     @action(methods=['GET'], detail=False)
     def get_high_salary_employees(self, request):
